@@ -1,6 +1,6 @@
-import { Suspense } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import RenderRouter from './render-router';
+import { Suspense } from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import RenderRouter from './render-router'
 
 const Routes = () => {
   return (
@@ -9,7 +9,7 @@ const Routes = () => {
         <RenderRouter />
       </BrowserRouter>
     </Suspense>
-  );
-};
+  )
+}
 
-export default Routes;
+export default Routes

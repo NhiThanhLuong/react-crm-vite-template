@@ -14,3 +14,8 @@ export enum EnumPostStatus {
   CANCEL = -1,
   ACTIVE = 1,
 }
+
+export enum EnumPostRelatedModal {
+  PRODUCT = 1,
+  POST,
+}

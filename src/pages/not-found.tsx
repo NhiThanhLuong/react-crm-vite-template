@@ -1,5 +1,5 @@
-import { Typography } from 'antd';
-import styled from 'styled-components';
+import { Typography } from 'antd'
+import styled from 'styled-components'
 
 const NotFound = () => {
   return (
@@ -13,10 +13,10 @@ const NotFound = () => {
       </Title>
       <Typography>Page not found.</Typography>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default NotFound;
+export default NotFound
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   min-height: 320px;
-`;
+`
 
 const Title = styled(Typography)`
   margin-top: -8vh;
@@ -35,10 +35,10 @@ const Title = styled(Typography)`
   span {
     font-size: 3.125rem;
   }
-`;
+`
 
 export const P = styled(Typography)`
   font-size: 1rem;
   line-height: 1.5;
   margin: 0.625rem 0 1.5rem 0;
-`;
+`

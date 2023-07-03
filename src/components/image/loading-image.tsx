@@ -1,11 +1,11 @@
-import { Skeleton } from 'antd';
-import { FC, HTMLProps, useEffect, useRef, useState } from 'react';
+import { Skeleton } from 'antd'
+import { FC, HTMLProps, useEffect, useRef, useState } from 'react'
 
 interface ImageProps {
-  opacity?: number;
-  src: string;
-  height: number;
-  alt: string;
+  opacity?: number
+  src: string
+  height: number
+  alt: string
 }
 
 const LoadingImage: FC<HTMLProps<HTMLImageElement> & ImageProps> = ({
@@ -17,23 +17,23 @@ const LoadingImage: FC<HTMLProps<HTMLImageElement> & ImageProps> = ({
   src,
   ...others
 }) => {
-  const [loaded, setLoaded] = useState(false);
-  const [realSrc, setRealSrc] = useState('');
+  const [loaded, setLoaded] = useState(false)
+  const [realSrc, setRealSrc] = useState('')
 
-  const imageRef = useRef<HTMLImageElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
     const handler = () => {
-      setLoaded(true);
-    };
-    const current = imageRef.current;
+      setLoaded(true)
+    }
+    const current = imageRef.current
 
-    current?.addEventListener('load', handler);
+    current?.addEventListener('load', handler)
 
-    setRealSrc(src);
+    setRealSrc(src)
 
-    return () => current?.removeEventListener('load', handler);
-  }, [src]);
+    return () => current?.removeEventListener('load', handler)
+  }, [src])
 
   return (
     <div
@@ -64,7 +64,7 @@ const LoadingImage: FC<HTMLProps<HTMLImageElement> & ImageProps> = ({
         />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default LoadingImage;
+export default LoadingImage

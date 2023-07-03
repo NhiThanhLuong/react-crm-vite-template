@@ -1,6 +1,6 @@
-import { COLOR, USER_PATH } from '@/data/constant';
+import { COLOR, USER_PATH } from '@/data/constant'
 
-export const USER_NAME = 'người dùng';
+export const USER_NAME = 'người dùng'
 export const USER_BREADCRUMBS = {
   list: [
     {
@@ -20,10 +20,10 @@ export const USER_BREADCRUMBS = {
   add: () => [
     USER_BREADCRUMBS.listPath,
     {
-      title: `Thêm ${USER_NAME}`,
+      title: `Tạo mới ${USER_NAME}`,
     },
   ],
-};
+}
 
 export const USER_STATUS = {
   PAUSED: {
@@ -46,13 +46,13 @@ export const USER_STATUS = {
     label: 'Dừng hoạt động',
     color: COLOR.DISABLED,
   },
-};
-export const USER_STATUS_LIST = Object.values(USER_STATUS);
+}
+export const USER_STATUS_LIST = Object.values(USER_STATUS)
 
 export const USER_ROLE = {
   ADMIN: {
     value: 1,
     label: 'Admin',
   },
-};
-export const USER_ROLE_LIST = Object.values(USER_ROLE);
+}
+export const USER_ROLE_LIST = Object.values(USER_ROLE)

@@ -1,8 +1,8 @@
-import { ColumnsType } from 'antd/es/table';
-import { FC } from 'react';
+import { ColumnsType } from 'antd/es/table'
+import { FC } from 'react'
 
-import { ListManagementWrapper } from '@/components';
-import { FILTER_SCHEMA_PAGE_LIST, USER_PATH } from '@/data/constant';
+import { ListManagementWrapper } from '@/components'
+import { FILTER_SCHEMA_PAGE_LIST, USER_PATH } from '@/data/constant'
 import {
   DataUser,
   USER_BREADCRUMBS,
@@ -11,20 +11,20 @@ import {
   USER_STATUS_LIST,
   UserListParams,
   useUserListQuery,
-} from '@/features/user';
-import { TFilterSchema } from '@/ts/types';
+} from '@/features/user'
+import { TFilterSchema } from '@/ts/types'
 import {
   columnAction,
   columnCreateAt,
   columnId,
   columnStatus,
-  filterCreateAtRange,
-  filterId,
-  filterPhoneNumber,
+  FILTER_CREATE_AT_RANGE,
+  FILTER_ID,
+  FILTER_PHONE_NUMBER,
   filterStatus,
   findObjInArrByKey,
   validator,
-} from '@/utils';
+} from '@/utils'
 
 const columns: ColumnsType<DataUser> = [
   columnId(),
@@ -50,10 +50,10 @@ const columns: ColumnsType<DataUser> = [
   columnStatus(USER_STATUS_LIST),
   columnCreateAt(),
   columnAction(USER_PATH),
-];
+]
 
 const filterSchema: TFilterSchema<UserListParams>[] = [
-  filterId,
+  FILTER_ID,
   {
     name: 'name',
     type: 'string',
@@ -69,7 +69,7 @@ const filterSchema: TFilterSchema<UserListParams>[] = [
     element: 'input',
     placeholder: 'Email',
   },
-  filterPhoneNumber,
+  FILTER_PHONE_NUMBER,
   {
     name: 'type',
     type: 'number',
@@ -85,9 +85,9 @@ const filterSchema: TFilterSchema<UserListParams>[] = [
     },
   },
   filterStatus(USER_STATUS_LIST),
-  ...filterCreateAtRange,
+  ...FILTER_CREATE_AT_RANGE,
   ...FILTER_SCHEMA_PAGE_LIST,
-];
+]
 
 const Users: FC = () => {
   return (
@@ -101,7 +101,7 @@ const Users: FC = () => {
         filterSchema,
       }}
     />
-  );
-};
+  )
+}
 
-export default Users;
+export default Users

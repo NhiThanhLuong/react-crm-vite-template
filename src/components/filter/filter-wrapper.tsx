@@ -1,19 +1,19 @@
-import { TFilterSchema } from '@/ts/types';
-import { Col, Form, FormProps, Row } from 'antd';
-import { Dayjs } from 'dayjs';
-import { cloneDeep } from 'lodash';
-import { useEffect } from 'react';
-import FilterCard from './filter-card';
-import FilterItem from './filter-item';
+import { TFilterSchema } from '@/ts/types'
+import { Col, Form, FormProps, Row } from 'antd'
+import { Dayjs } from 'dayjs'
+import { cloneDeep } from 'lodash'
+import { useEffect } from 'react'
+import FilterCard from './filter-card'
+import FilterItem from './filter-item'
 
 type Props<T extends Record<string, unknown>> = Omit<FormProps, 'onChange'> & {
   filter: {
-    [key: string]: string | number | Dayjs | undefined;
-  };
-  onReset: () => void;
-  schemaList: TFilterSchema<T>[];
-  onChange: (_: Record<string, unknown>) => void;
-};
+    [key: string]: string | number | Dayjs | undefined
+  }
+  onReset: () => void
+  schemaList: TFilterSchema<T>[]
+  onChange: (params: T) => void
+}
 
 const colProps = {
   xxl: 4,
@@ -21,7 +21,7 @@ const colProps = {
   md: 8,
   sm: 12,
   xs: 24,
-};
+}
 
 const FilterWrapper = <T extends Record<string, unknown>>({
   filter,
@@ -30,21 +30,21 @@ const FilterWrapper = <T extends Record<string, unknown>>({
   schemaList,
   ...props
 }: Props<T>) => {
-  const [form] = Form.useForm();
+  const [form] = Form.useForm()
 
   useEffect(() => {
-    form.setFieldsValue(filter);
-  }, [filter, form]);
+    form.setFieldsValue(filter)
+  }, [filter, form])
 
   const handleReset = () => {
-    form.resetFields();
-    onReset();
-  };
+    form.resetFields()
+    onReset()
+  }
 
-  const handleFinish = (values: Record<string, unknown>) => {
-    const transformValues = cloneDeep(values);
-    onChange(transformValues);
-  };
+  const handleFinish = (values: T) => {
+    const transformValues = cloneDeep(values)
+    onChange(transformValues)
+  }
 
   return (
     <Form form={form} onFinish={handleFinish} {...props}>
@@ -58,7 +58,7 @@ const FilterWrapper = <T extends Record<string, unknown>>({
         </Row>
       </FilterCard>
     </Form>
-  );
-};
+  )
+}
 
-export default FilterWrapper;
+export default FilterWrapper

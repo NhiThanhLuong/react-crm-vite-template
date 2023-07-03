@@ -1,17 +1,17 @@
-import { ReactElement } from 'react';
-import { Navigate } from 'react-router-dom';
+import { ReactElement } from 'react'
+import { Navigate } from 'react-router-dom'
 
-import { LOGIN_PATH } from '@/data/constant';
-import { useAuthStore } from '@/features/auth';
+import { LOGIN_PATH } from '@/data/constant'
+import { useAuthStore } from '@/features/auth'
 
 type Props = {
-  children: ReactElement;
-};
+  children: ReactElement
+}
 
 const PrivateRoute = ({ children }: Props) => {
-  const token = useAuthStore((state) => state.token);
+  const token = useAuthStore((state) => state.token)
 
-  return token ? children : <Navigate to={LOGIN_PATH} replace />;
-};
+  return token ? children : <Navigate to={LOGIN_PATH} replace />
+}
 
-export default PrivateRoute;
+export default PrivateRoute

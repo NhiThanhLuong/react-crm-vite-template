@@ -1,9 +1,9 @@
-import { Select, SelectProps } from 'antd';
-import styled from 'styled-components';
+import { Select, SelectProps } from 'antd'
+import styled from 'styled-components'
 
 type StyleProps = SelectProps & {
-  color: string;
-};
+  color: string
+}
 
 const StyleStatusSelect = styled((props: StyleProps) => <Select {...props} />)`
   .ant-select-selector {
@@ -17,6 +17,6 @@ const StyleStatusSelect = styled((props: StyleProps) => <Select {...props} />)`
   .ant-select-arrow {
     color: #fff;
   }
-`;
+`
 
-export default StyleStatusSelect;
+export default StyleStatusSelect

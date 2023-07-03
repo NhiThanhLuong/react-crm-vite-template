@@ -1,13 +1,13 @@
-import { BreadcrumbsType } from '@/ts/types';
-import { Spin } from 'antd';
-import { FC, ReactNode } from 'react';
-import CustomBreadcrumb from '../custom/custom-breadcrumb';
+import { BreadcrumbsType } from '@/ts/types'
+import { Spin } from 'antd'
+import { FC, ReactNode } from 'react'
+import CustomBreadcrumb from '../custom/custom-breadcrumb'
 
 type Props = {
-  isLoading?: boolean;
-  breadcrumbs?: BreadcrumbsType[];
-  children: ReactNode;
-};
+  isLoading?: boolean
+  breadcrumbs?: BreadcrumbsType[]
+  children: ReactNode
+}
 
 const BreadcrumbsWrapper: FC<Props> = ({
   isLoading = false,
@@ -19,7 +19,7 @@ const BreadcrumbsWrapper: FC<Props> = ({
       <CustomBreadcrumb routes={breadcrumbs} />
       <Spin spinning={isLoading}>{children}</Spin>
     </>
-  );
-};
+  )
+}
 
-export default BreadcrumbsWrapper;
+export default BreadcrumbsWrapper

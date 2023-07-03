@@ -3,5 +3,5 @@ export const findObjInArrByKey = <T extends Record<string, unknown>>(
   value: unknown,
   key: keyof T = 'value'
 ): T | undefined => {
-  return arr.find((item) => item[key] === value);
-};
+  return arr.find((item) => item[key] === value)
+}

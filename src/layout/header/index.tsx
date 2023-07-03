@@ -1,31 +1,32 @@
-import { Button, Image, Layout, Space, Tooltip, Typography } from 'antd';
-import { BsSun } from 'react-icons/bs';
-import { FaRegMoon } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Button, Image, Layout, Space, Tooltip, Typography } from 'antd'
+import { BsSun } from 'react-icons/bs'
+import { FaRegMoon } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
-import { COLOR, DASHBOARD_PATH } from '@/data/constant';
-import { useThemeStore } from '@/hooks';
-import UserInfo from './user-info';
+import { COLOR, DASHBOARD_PATH } from '@/data/constant'
+import { useThemeStore } from '@/hooks'
+import UserInfo from './user-info'
+import { LanguageSwitch } from '@/features/languages'
 
-const { Header } = Layout;
+const { Header } = Layout
 
 const HeaderComponent = () => {
-  const theme = useThemeStore((state) => state.theme);
-  const setTheme = useThemeStore((state) => state.setTheme);
+  const theme = useThemeStore((state) => state.theme)
+  const setTheme = useThemeStore((state) => state.setTheme)
 
   const onChangeTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
 
-    localStorage.setItem('theme', newTheme);
+    localStorage.setItem('theme', newTheme)
     setTheme({
       theme: newTheme,
-    });
-  };
+    })
+  }
 
   return (
     <Header className="bg-inherit">
       <div
-        className="fixed h-16 inset-x-0 z-30 flex justify-between items-center px-4"
+        className="fixed inset-x-0 z-30 flex items-center justify-between h-16 px-4"
         style={{
           backgroundColor:
             theme === 'dark' ? COLOR.DARK_PRIMARY : COLOR.LIGHT_PRIMARY,
@@ -43,7 +44,7 @@ const HeaderComponent = () => {
             <Typography className="text-lg font-bold">ADMIN PANEL</Typography>
           </Space>
         </Link>
-        <Space>
+        <Space size="large">
           <Tooltip
             title={`Chuyển sang chế độ ban ${
               theme === 'dark' ? 'ngày' : 'đêm'
@@ -58,11 +59,12 @@ const HeaderComponent = () => {
               }
             />
           </Tooltip>
+          <LanguageSwitch />
           <UserInfo />
         </Space>
       </div>
     </Header>
-  );
-};
+  )
+}
 
-export default HeaderComponent;
+export default HeaderComponent

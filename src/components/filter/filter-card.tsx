@@ -1,17 +1,17 @@
-import { CustomCard } from '@/components';
-import { Button, Space } from 'antd';
-import { FC, ReactElement } from 'react';
-import { FaAngleDoubleDown, FaAngleDoubleUp } from 'react-icons/fa';
-import { FcClearFilters, FcSearch } from 'react-icons/fc';
-import { useToggle } from 'usehooks-ts';
+import { CustomCard } from '@/components'
+import { Button, Space } from 'antd'
+import { FC, ReactElement } from 'react'
+import { FaAngleDoubleDown, FaAngleDoubleUp } from 'react-icons/fa'
+import { FcClearFilters, FcSearch } from 'react-icons/fc'
+import { useToggle } from 'usehooks-ts'
 
 type Props = {
-  onReset: () => void;
-  children: ReactElement;
-};
+  onReset: () => void
+  children: ReactElement
+}
 
 const FilterCard: FC<Props> = ({ onReset, children }) => {
-  const [isExpand, toggleExpand] = useToggle(true);
+  const [isExpand, toggleExpand] = useToggle(true)
 
   return (
     <CustomCard
@@ -48,7 +48,7 @@ const FilterCard: FC<Props> = ({ onReset, children }) => {
     >
       {children}
     </CustomCard>
-  );
-};
+  )
+}
 
-export default FilterCard;
+export default FilterCard

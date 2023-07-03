@@ -1,47 +1,45 @@
-import './App.css';
+import './App.css'
 
-import { App as AppProvider, ConfigProvider, theme as ThemeConfig } from 'antd';
-import { useCallback, useEffect } from 'react';
+import { ConfigProvider, theme as ThemeConfig } from 'antd'
+import { useCallback, useEffect } from 'react'
 
-import { COLOR } from './data/constant';
-import useThemeStore from './hooks/zustand-store/use-theme-store';
-import Routes from './routes';
+import { COLOR } from './data/constant'
+import useThemeStore from './hooks/zustand-store/use-theme-store'
+import Routes from './routes'
 
 function App() {
-  const theme = useThemeStore((state) => state.theme);
-  const setTheme = useThemeStore((state) => state.setTheme);
-
-  // const { t, i18n } = useTranslation();
+  const theme = useThemeStore((state) => state.theme)
+  const setTheme = useThemeStore((state) => state.setTheme)
 
   const setThemeState = useCallback(
     (dark = true) => {
       setTheme({
         theme: dark ? 'dark' : 'light',
-      });
+      })
     },
     [setTheme]
-  );
+  )
 
   const matchMode = useCallback(
     (e: MediaQueryListEvent) => {
-      setThemeState(e.matches);
+      setThemeState(e.matches)
     },
     [setThemeState]
-  );
+  )
 
   useEffect(() => {
-    setThemeState(theme === 'dark');
+    setThemeState(theme === 'dark')
 
     // watch system theme change
     if (!localStorage.getItem('theme')) {
-      const mql = window.matchMedia('(prefers-color-scheme: dark)');
+      const mql = window.matchMedia('(prefers-color-scheme: dark)')
 
-      mql.addEventListener('change', matchMode);
+      mql.addEventListener('change', matchMode)
     }
-  }, [matchMode, setThemeState, theme]);
+  }, [matchMode, setThemeState, theme])
 
   return (
-    <div className="App">
+    <div className="h-full App">
       <ConfigProvider
         componentSize="middle"
         theme={{
@@ -56,12 +54,10 @@ function App() {
               : ThemeConfig.defaultAlgorithm,
         }}
       >
-        <AppProvider className="h-full">
-          <Routes />
-        </AppProvider>
+        <Routes />
       </ConfigProvider>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

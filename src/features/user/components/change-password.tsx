@@ -1,18 +1,17 @@
-import { MainAction } from '@/components';
-import { DEFAULT_PASSWORD } from '@/data/constant';
-import { validator, validatorFn } from '@/utils';
-import { UseMutateFunction } from '@tanstack/react-query';
-import { Descriptions, Form, Input, Typography } from 'antd';
-import { Rule } from 'antd/es/form';
-import { FC } from 'react';
-import { BodyUpdateUser } from '../services/type';
+import { MainAction } from '@/components'
+import { DEFAULT_PASSWORD } from '@/data/constant'
+import { validator, validatorFn } from '@/utils'
+import { UseMutateFunction } from '@tanstack/react-query'
+import { Descriptions, Form, Input, Typography } from 'antd'
+import { FC } from 'react'
+import { BodyUpdateUser } from '../services/type'
 
 type Props = {
-  mutate: UseMutateFunction<unknown, unknown, BodyUpdateUser, unknown>;
-  isLoading?: boolean;
-  onCancel?: () => void;
-  keyModal?: string;
-};
+  mutate: UseMutateFunction<unknown, unknown, BodyUpdateUser, unknown>
+  isLoading?: boolean
+  onCancel?: () => void
+  keyModal?: string
+}
 
 const ChangePassword: FC<Props> = ({
   mutate,
@@ -20,7 +19,7 @@ const ChangePassword: FC<Props> = ({
   onCancel,
   keyModal,
 }) => {
-  const [form] = Form.useForm();
+  const [form] = Form.useForm()
 
   const handleFinish = ({ password }: { password: string }) => {
     mutate(
@@ -28,8 +27,8 @@ const ChangePassword: FC<Props> = ({
       {
         onSuccess: () => onCancel!(),
       }
-    );
-  };
+    )
+  }
 
   const handleReset = () => {
     mutate(
@@ -37,8 +36,8 @@ const ChangePassword: FC<Props> = ({
       {
         onSuccess: () => onCancel!(),
       }
-    );
-  };
+    )
+  }
 
   return keyModal === '1' ? (
     <Form form={form} onFinish={handleFinish} disabled={isLoading}>
@@ -76,22 +75,11 @@ const ChangePassword: FC<Props> = ({
         Bạn có muốn reset mật khẩu về mặc định:{' '}
       </Typography.Text>
       <Typography.Text className="text-base" strong>
-        123456a@
+        {DEFAULT_PASSWORD}
       </Typography.Text>
       <MainAction onOk={handleReset} onCancel={onCancel as () => void} />
     </>
-  );
-};
+  )
+}
 
-export default ChangePassword;
-
-const validateConfirmPassword: Rule = ({ getFieldValue }) => ({
-  validator(_, value) {
-    if (!value || getFieldValue('password') === value) {
-      return Promise.resolve();
-    }
-    return Promise.reject(
-      new Error('Nội dung phải trùng khớp với mật khẩu trên')
-    );
-  },
-});
+export default ChangePassword

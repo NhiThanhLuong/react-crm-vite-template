@@ -1,8 +1,8 @@
-import { DateRangeParams, TFilterSchema } from '@/ts/types';
-import validator from './validate';
-import { DefaultOptionType } from 'antd/es/select';
+import { DateRangeParams, TFilterSchema } from '@/ts/types'
+import validator from './validate'
+import { DefaultOptionType } from 'antd/es/select'
 
-export const filterId: TFilterSchema<Record<'id', number>> = {
+export const FILTER_ID: TFilterSchema<Record<'id', number>> = {
   name: 'id',
   type: 'number',
   element: 'number',
@@ -10,7 +10,7 @@ export const filterId: TFilterSchema<Record<'id', number>> = {
   fieldProps: {
     controls: false,
   },
-};
+}
 
 export const filterStatus = (
   options?: DefaultOptionType[]
@@ -22,9 +22,9 @@ export const filterStatus = (
   fieldProps: {
     options,
   },
-});
+})
 
-export const filterCreateAtRange: TFilterSchema<DateRangeParams>[] = [
+export const FILTER_CREATE_AT_RANGE: TFilterSchema<DateRangeParams>[] = [
   {
     name: 'createdFrom',
     type: 'date',
@@ -39,9 +39,9 @@ export const filterCreateAtRange: TFilterSchema<DateRangeParams>[] = [
     placeholder: 'Thời gian tạo đến',
     fromDateName: 'createdFrom',
   },
-];
+]
 
-export const filterPhoneNumber: TFilterSchema<Record<'phone', string>> = {
+export const FILTER_PHONE_NUMBER: TFilterSchema<Record<'phone', string>> = {
   name: 'phone',
   type: 'string',
   element: 'input',
@@ -49,4 +49,4 @@ export const filterPhoneNumber: TFilterSchema<Record<'phone', string>> = {
   formItemProps: {
     rules: validator('number'),
   },
-};
+}

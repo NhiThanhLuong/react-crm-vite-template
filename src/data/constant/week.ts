@@ -27,6 +27,6 @@ const DAY_OF_WEEEK = {
     value: '7',
     label: 'Chủ nhật',
   },
-};
+}
 
-export const DAY_OF_WEEEK_LIST = Object.values(DAY_OF_WEEEK);
+export const DAY_OF_WEEEK_LIST = Object.values(DAY_OF_WEEEK)

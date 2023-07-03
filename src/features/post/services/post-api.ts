@@ -1,12 +1,13 @@
-import axiosClient from '@/apis/axios-client';
+import axiosClient from '@/apis/axios-client'
 import {
+  BodyAddPost,
   BodyUpdatePost,
   PostData,
   PostListData,
   PostListParams,
-} from './types';
+} from './types'
 
-const baseUrl = 'posts';
+const baseUrl = 'posts'
 
 const postApi = {
   getList: (params: PostListParams): Promise<PostListData> =>
@@ -17,6 +18,8 @@ const postApi = {
 
   update: (id: number) => (data: BodyUpdatePost) =>
     axiosClient.put(`${baseUrl}/${id}`, data),
-};
 
-export default postApi;
+  add: (data: BodyAddPost) => axiosClient.post(baseUrl, data),
+}
+
+export default postApi

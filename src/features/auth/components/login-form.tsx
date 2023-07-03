@@ -1,50 +1,50 @@
-import { Button, Checkbox, Form, Input, Row } from 'antd';
-import { FC } from 'react';
-import { useSessionStorage } from 'usehooks-ts';
+import { Button, Checkbox, Form, Input, Row } from 'antd'
+import { FC } from 'react'
+import { useSessionStorage } from 'usehooks-ts'
 
-import { LoginValues, useAuthStore, useLoginMutation } from '@/features/auth';
-import { useApp } from '@/hooks';
-import { validator, validatorFn } from '@/utils';
-import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai';
+import { LoginValues, useAuthStore, useLoginMutation } from '@/features/auth'
+import { useApp } from '@/hooks'
+import { validator, validatorFn } from '@/utils'
+import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai'
 
 type Values = LoginValues & {
-  isSaved?: boolean;
-};
+  isSaved?: boolean
+}
 
 type Props = {
-  setForgotTrue: () => void;
-};
+  setForgotTrue: () => void
+}
 
 const LoginForm: FC<Props> = ({ setForgotTrue }) => {
-  const { message } = useApp();
-  const login = useAuthStore((state) => state.login);
+  const { message } = useApp()
+  const login = useAuthStore((state) => state.login)
 
   const [savedData, setSavedData] = useSessionStorage<
     Partial<Values> | undefined
   >('savedData', {
     isSaved: false,
-  });
+  })
 
-  const { mutate, isLoading } = useLoginMutation();
+  const { mutate, isLoading } = useLoginMutation()
 
   const handleFinish = (values: Values) => {
-    const { isSaved, ...formValues } = values;
+    const { isSaved, ...formValues } = values
     setSavedData(
       isSaved
         ? values
         : {
             isSaved: false,
           }
-    );
+    )
     mutate(formValues, {
       onSuccess: ({ token }) => {
-        login(token);
+        login(token)
       },
       onError: () => {
-        void message.error('Email hoặc mật khẩu không đúng');
+        void message.error('Email hoặc mật khẩu không đúng')
       },
-    });
-  };
+    })
+  }
 
   return (
     <Form
@@ -88,7 +88,7 @@ const LoginForm: FC<Props> = ({ setForgotTrue }) => {
         <span>Đăng nhập</span>
       </Button>
     </Form>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

@@ -1,17 +1,17 @@
-import { useApp } from '@/hooks';
-import { Status } from '@/ts/types';
-import { findObjInArrByKey } from '@/utils';
-import { FC, useCallback } from 'react';
-import StyleStatusSelect from './style-status-select';
+import { useApp } from '@/hooks'
+import { Status } from '@/ts/types'
+import { findObjInArrByKey } from '@/utils'
+import { FC, useCallback } from 'react'
+import StyleStatusSelect from './style-status-select'
 
 type Props = {
-  value?: number;
-  onChange: (_status: number) => void;
-  statusList: Status[];
-};
+  value?: number
+  onChange: (_status: number) => void
+  statusList: Status[]
+}
 
 const StatusChange: FC<Props> = ({ value, onChange, statusList }) => {
-  const { modal } = useApp();
+  const { modal } = useApp()
   const handleChange = useCallback(
     (status: number) => {
       modal.confirm({
@@ -20,15 +20,15 @@ const StatusChange: FC<Props> = ({ value, onChange, statusList }) => {
         cancelText: 'Hủy bỏ',
         okText: 'Đồng ý',
         onOk: () => {
-          onChange(status);
+          onChange(status)
         },
-      });
+      })
     },
     [modal, onChange]
-  );
+  )
 
-  if (!value) return <span>Loading...</span>;
-  const statusObj = findObjInArrByKey(statusList, value) as Status;
+  if (!value) return <span>Loading...</span>
+  const statusObj = findObjInArrByKey(statusList, value) as Status
 
   return (
     <StyleStatusSelect
@@ -37,7 +37,7 @@ const StatusChange: FC<Props> = ({ value, onChange, statusList }) => {
       onChange={handleChange}
       options={statusList}
     />
-  );
-};
+  )
+}
 
-export default StatusChange;
+export default StatusChange

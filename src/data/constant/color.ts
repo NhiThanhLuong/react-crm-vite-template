@@ -6,6 +6,6 @@ const COLOR = {
   LIGHT_PRIMARY: '#DE9C16',
   DARK_PRIMARY: '#3b78f9',
   LOGIN_BG: '#162C5B',
-};
+}
 
-export default COLOR;
+export default COLOR

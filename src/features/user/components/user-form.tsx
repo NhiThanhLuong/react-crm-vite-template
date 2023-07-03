@@ -1,15 +1,15 @@
-import { ColorSelect, CustomDescriptions, UploadImage } from '@/components';
-import { DescriptionsRecord } from '@/ts/types';
-import { validator, validatorFn } from '@/utils';
-import { Form, Input, Select } from 'antd';
-import dayjs from 'dayjs';
-import { FC } from 'react';
-import { USER_ROLE_LIST, USER_STATUS_LIST } from '../constant';
-import { DataUser } from '../services/type';
+import { ColorSelect, CustomDescriptions, UploadImage } from '@/components'
+import { DescriptionsRecord } from '@/ts/types'
+import { validator, validatorFn } from '@/utils'
+import { Form, Input, Select } from 'antd'
+import dayjs from 'dayjs'
+import { FC } from 'react'
+import { USER_ROLE_LIST, USER_STATUS_LIST } from '../constant'
+import { DataUser } from '../services/type'
 
 type Props = {
-  data?: DataUser;
-};
+  data?: DataUser
+}
 
 const UserForm: FC<Props> = ({ data }) => {
   const descriptionData: DescriptionsRecord[] = [
@@ -95,7 +95,7 @@ const UserForm: FC<Props> = ({ data }) => {
         </Form.Item>
       ),
     },
-  ];
+  ]
 
   return (
     <CustomDescriptions
@@ -104,7 +104,7 @@ const UserForm: FC<Props> = ({ data }) => {
         width: 200,
       }}
     />
-  );
-};
+  )
+}
 
-export default UserForm;
+export default UserForm

@@ -1,12 +1,12 @@
-import { Tag, TagProps } from 'antd';
-import { FC } from 'react';
+import { Tag, TagProps } from 'antd'
+import { FC } from 'react'
 
 type Props = TagProps & {
   statusObj: {
-    color: string;
-    label: string;
-  };
-};
+    color: string
+    label: string
+  }
+}
 
 const StatusTagTwo: FC<Props> = ({ statusObj, ...props }) => {
   return (
@@ -17,7 +17,7 @@ const StatusTagTwo: FC<Props> = ({ statusObj, ...props }) => {
     >
       {statusObj.label}
     </Tag>
-  );
-};
+  )
+}
 
-export default StatusTagTwo;
+export default StatusTagTwo

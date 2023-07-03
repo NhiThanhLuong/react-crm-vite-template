@@ -1,21 +1,21 @@
-import { useApp } from '@/hooks';
-import { getPathImg, localToken } from '@/utils';
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { Upload, UploadProps } from 'antd';
-import { FC, useState } from 'react';
-import styled from 'styled-components';
-import { beforeUpload } from './upload';
+import { useApp } from '@/hooks'
+import { getLocalStorage, getPathImg } from '@/utils'
+import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
+import { Upload, UploadProps } from 'antd'
+import { FC, useState } from 'react'
+import styled from 'styled-components'
+import { beforeUpload } from './upload'
 
 type UploadStyleProps = UploadProps & {
-  height?: number;
-};
+  height?: number
+}
 
 type Props = UploadStyleProps & {
-  actionAPI?: string;
-  isDisabled?: boolean;
-  value?: string;
-  onChange?: (_value: unknown) => void;
-};
+  actionAPI?: string
+  isDisabled?: boolean
+  value?: string
+  onChange?: (_value: unknown) => void
+}
 
 const UploadImage: FC<Props> = ({
   actionAPI = import.meta.env.VITE_UPLOAD_API,
@@ -25,30 +25,30 @@ const UploadImage: FC<Props> = ({
   onChange,
   ...props
 }) => {
-  const { message } = useApp();
-  const [loading, setLoading] = useState(false);
+  const { message } = useApp()
+  const [loading, setLoading] = useState(false)
 
   const handleChange: UploadProps<{
-    id: number;
+    id: number
   }>['onChange'] = (info) => {
-    const status = info.file.status;
+    const status = info.file.status
 
     if (status === 'uploading') {
-      setLoading(true);
-      return;
+      setLoading(true)
+      return
     }
 
     if (status === 'done') {
-      const imageId = info.file.response?.id;
+      const imageId = info.file.response?.id
 
-      setLoading(false);
+      setLoading(false)
 
-      onChange!(imageId);
+      onChange!(imageId)
     } else {
-      setLoading(false);
-      void message.error('Upload hình thất bại');
+      setLoading(false)
+      void message.error('Upload hình thất bại')
     }
-  };
+  }
 
   const uploadProps: UploadStyleProps = {
     accept: 'image/png, image/jpeg, image/webp',
@@ -56,13 +56,13 @@ const UploadImage: FC<Props> = ({
     listType: 'picture-card',
     disabled: loading || isDisabled,
     headers: {
-      authorization: `Bearer ${localToken as string}`,
+      authorization: `Bearer ${getLocalStorage('token')!}`,
     },
     showUploadList: false,
     onChange: handleChange,
     beforeUpload: (file) => beforeUpload(message, file),
     height,
-  };
+  }
 
   return (
     <UploadStyle {...uploadProps} {...props}>
@@ -79,10 +79,10 @@ const UploadImage: FC<Props> = ({
       )}
       {!imageURL && <div className="ml-1">Chọn ảnh</div>}
     </UploadStyle>
-  );
-};
+  )
+}
 
-export default UploadImage;
+export default UploadImage
 
 const UploadStyle = styled((props: UploadStyleProps) => <Upload {...props} />)`
   .ant-upload-select {
@@ -92,4 +92,4 @@ const UploadStyle = styled((props: UploadStyleProps) => <Upload {...props} />)`
     padding-left: 8px;
     padding-right: 8px;
   }
-`;
+`

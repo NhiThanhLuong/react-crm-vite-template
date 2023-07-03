@@ -1,17 +1,17 @@
-import { PopconfirmProps, Space } from 'antd';
-import { FC, ReactNode } from 'react';
-import CommonButton from './common-button';
-import ConfirmButton from './confirm-button';
+import { PopconfirmProps, Space } from 'antd'
+import { FC, ReactNode } from 'react'
+import CommonButton from './common-button'
+import ConfirmButton from './confirm-button'
 
 type Props = {
-  isCancelDisabled?: boolean;
-  isOkDisabled?: boolean;
-  isOkLoading?: boolean;
-  isAddType?: boolean;
-  cancelText?: ReactNode;
-  onOk: PopconfirmProps['onConfirm'];
-  onCancel: () => void;
-};
+  isCancelDisabled?: boolean
+  isOkDisabled?: boolean
+  isOkLoading?: boolean
+  isAddType?: boolean
+  cancelText?: ReactNode
+  onOk: PopconfirmProps['onConfirm']
+  onCancel: () => void
+}
 
 const MainAction: FC<Props> = ({
   isCancelDisabled,
@@ -47,12 +47,12 @@ const MainAction: FC<Props> = ({
             loading={isOkLoading}
             className="flex"
           >
-            {isAddType ? 'Thêm' : 'Cập nhật'}
+            {isAddType ? 'Tạo mới' : 'Cập nhật'}
           </CommonButton>
         }
       />
     </Space>
-  );
-};
+  )
+}
 
-export default MainAction;
+export default MainAction

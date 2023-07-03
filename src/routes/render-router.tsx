@@ -1,13 +1,13 @@
-import { FC, lazy } from 'react';
-import { Navigate, useRoutes } from 'react-router-dom';
+import { FC, lazy } from 'react'
+import { Navigate, useRoutes } from 'react-router-dom'
 
-import { routeList } from '@/data/constant/navs';
-import { LOGIN_PATH } from '@/data/constant/path';
-import LayoutComponent from '@/layout';
-import Login from '@/pages/login';
-import PrivateRoute from './private-route';
+import { routeList } from '@/data/constant/navs'
+import { LOGIN_PATH } from '@/data/constant/path'
+import LayoutComponent from '@/layout'
+import Login from '@/pages/login'
+import PrivateRoute from './private-route'
 
-const NotFound = lazy(() => import('@/pages/not-found'));
+const NotFound = lazy(() => import('@/pages/not-found'))
 
 const routes = [
   {
@@ -33,12 +33,12 @@ const routes = [
       },
     ],
   },
-];
+]
 
 const RenderRouter: FC = () => {
-  const element = useRoutes(routes);
+  const element = useRoutes(routes)
 
-  return element;
-};
+  return element
+}
 
-export default RenderRouter;
+export default RenderRouter

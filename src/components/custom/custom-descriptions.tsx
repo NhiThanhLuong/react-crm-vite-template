@@ -1,11 +1,11 @@
-import { DescriptionsRecord } from '@/ts/types';
-import { Descriptions, DescriptionsProps, Typography } from 'antd';
-import { FC } from 'react';
-import RequiredLabel from '../common/required-label';
+import { DescriptionsRecord } from '@/ts/types'
+import { Descriptions, DescriptionsProps, Typography } from 'antd'
+import { FC } from 'react'
+import RequiredLabel from '../common/required-label'
 
 type Props = DescriptionsProps & {
-  data: DescriptionsRecord[];
-};
+  data: DescriptionsRecord[]
+}
 
 const CustomDescriptions: FC<Props> = ({
   column = 1,
@@ -22,22 +22,22 @@ const CustomDescriptions: FC<Props> = ({
       {...props}
     >
       {data.map((item) => {
-        if (item.isShow === false) return null;
+        if (item.isShow === false) return null
 
         const labelTitle = item.isRequired ? (
           <RequiredLabel label={item.labelText} />
         ) : (
           <Typography.Text>{item.labelText}</Typography.Text>
-        );
+        )
 
         return (
           <Descriptions.Item key={item.labelText} label={labelTitle}>
             {item.descriptionElement}
           </Descriptions.Item>
-        );
+        )
       })}
     </Descriptions>
-  );
-};
+  )
+}
 
-export default CustomDescriptions;
+export default CustomDescriptions

@@ -1,11 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
-import postCategoryApi from '../services/post-category-api';
-import { NumberEnumUnion } from '@/ts/types';
-import { EnumPostCategoryType } from '../services/enums';
+import { useQuery } from '@tanstack/react-query'
+import { EnumPostCategoryType } from '../services/enums'
+import postCategoryApi from '../services/post-category-api'
 
-export const usePostCategoryQuery = (
-  type: NumberEnumUnion<typeof EnumPostCategoryType>
-) => {
+export const usePostCategoryQuery = (type: EnumPostCategoryType) => {
   return useQuery({
     queryKey: ['posts', 'categories'],
     queryFn: () => postCategoryApi.getList(type),
@@ -14,5 +11,5 @@ export const usePostCategoryQuery = (
         value: item.id,
         label: item.name,
       })),
-  });
-};
+  })
+}

@@ -55,7 +55,7 @@ const Login: FC = () => {
 
           <div className="mt-4 text-black">
             <p className="my-0">Version {import.meta.env.VITE_VERSION}</p>
-            <span>Copyright &copy; 2023 BOSSEN</span>
+            <span>Copyright &copy; 2023</span>
           </div>
         </StyledCard>
       </div>

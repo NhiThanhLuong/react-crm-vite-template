@@ -1,14 +1,14 @@
-import { Layout, Spin } from 'antd';
-import dayjs from 'dayjs';
-import { Suspense } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
-import { Outlet } from 'react-router-dom';
-import fallbackRender from './error-boundary/fallbackRender';
-import HeaderComponent from './header';
-import MenuComponent from './menu';
+import { Layout, Spin } from 'antd'
+import dayjs from 'dayjs'
+import { Suspense } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
+import { Outlet } from 'react-router-dom'
+import fallbackRender from './error-boundary/fallbackRender'
+import HeaderComponent from './header'
+import MenuComponent from './menu'
 
-const { Content, Footer } = Layout;
-const year = dayjs().format('YYYY');
+const { Content, Footer } = Layout
+const year = dayjs().format('YYYY')
 
 const LayoutComponent = () => {
   return (
@@ -39,7 +39,7 @@ const LayoutComponent = () => {
         </Layout>
       </Layout>
     </Layout>
-  );
-};
+  )
+}
 
-export default LayoutComponent;
+export default LayoutComponent

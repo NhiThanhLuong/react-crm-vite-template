@@ -1,4 +1,4 @@
-import { BreadcrumbsWrapper, MainAction } from '@/components';
+import { BreadcrumbsWrapper, MainAction } from '@/components'
 import {
   BodyUpdateUser,
   ChangePassword,
@@ -9,22 +9,22 @@ import {
   useInfoQuery,
   useUpdateUserMutation,
   useUserDetailQuery,
-} from '@/features/user';
-import { differentObject } from '@/utils';
-import { Card, Form } from 'antd';
-import { FC, useEffect, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
-import { useBoolean } from 'usehooks-ts';
+} from '@/features/user'
+import { differentObject } from '@/utils'
+import { Card, Form } from 'antd'
+import { FC, useEffect, useMemo } from 'react'
+import { useParams } from 'react-router-dom'
+import { useBoolean } from 'usehooks-ts'
 
 const UserDetail: FC = () => {
-  const [form] = Form.useForm();
-  const { id } = useParams();
-  const { value: isChanged, setTrue, setFalse } = useBoolean(false);
-  const { data, isLoading } = useUserDetailQuery(+id!);
-  const { mutate, isLoading: isUpdating } = useUpdateUserMutation(+id!);
+  const [form] = Form.useForm()
+  const { id } = useParams()
+  const { value: isChanged, setTrue, setFalse } = useBoolean(false)
+  const { data, isLoading } = useUserDetailQuery(+id!)
+  const { mutate, isLoading: isUpdating } = useUpdateUserMutation(+id!)
 
-  const { data: myUser } = useInfoQuery();
-  const isMe = myUser?.id === +id!;
+  const { data: myUser } = useInfoQuery()
+  const isMe = myUser?.id === +id!
 
   const initialValues = useMemo(
     () =>
@@ -35,26 +35,24 @@ const UserDetail: FC = () => {
         },
       },
     [data]
-  );
+  )
 
   useEffect(() => {
-    form.setFieldsValue(initialValues);
-  }, [initialValues, form]);
+    form.setFieldsValue(initialValues)
+  }, [initialValues, form])
 
   const handleReset = () => {
-    form.resetFields();
-    setFalse();
-  };
+    form.resetFields()
+    setFalse()
+  }
 
   const handleFinish = (values: BodyUpdateUser) => {
-    const dataChanged = differentObject(values, initialValues);
+    const dataChanged = differentObject(values, initialValues)
 
     mutate(dataChanged, {
-      onSuccess: () => {
-        setFalse();
-      },
-    });
-  };
+      onSuccess: setFalse,
+    })
+  }
 
   return (
     <BreadcrumbsWrapper
@@ -78,16 +76,18 @@ const UserDetail: FC = () => {
         >
           <UserForm data={data} />
         </Form>
-        <MainAction
-          onOk={form.submit}
-          onCancel={handleReset}
-          isCancelDisabled={!isChanged}
-          isOkLoading={isUpdating}
-          isOkDisabled={!isChanged}
-        />
+        {isChanged && (
+          <MainAction
+            onOk={form.submit}
+            onCancel={handleReset}
+            isCancelDisabled={!isChanged}
+            isOkLoading={isUpdating}
+            isOkDisabled={!isChanged}
+          />
+        )}
       </Card>
     </BreadcrumbsWrapper>
-  );
-};
+  )
+}
 
-export default UserDetail;
+export default UserDetail

@@ -1,6 +1,6 @@
-import { Dropdown, Modal } from 'antd';
-import { ItemType } from 'antd/es/menu/hooks/useItems';
-import { MenuClickEventHandler } from 'rc-menu/lib/interface';
+import { Dropdown, Modal } from 'antd'
+import { ItemType } from 'antd/es/menu/hooks/useItems'
+import { MenuClickEventHandler } from 'rc-menu/lib/interface'
 import {
   Children,
   FC,
@@ -9,15 +9,15 @@ import {
   useCallback,
   useMemo,
   useState,
-} from 'react';
-import { AiFillLock, AiTwotoneSetting } from 'react-icons/ai';
-import { MdOutlineSwapHorizontalCircle } from 'react-icons/md';
-import styled from 'styled-components';
+} from 'react'
+import { AiFillLock, AiTwotoneSetting } from 'react-icons/ai'
+import { MdOutlineSwapHorizontalCircle } from 'react-icons/md'
+import styled from 'styled-components'
 
 const modals: Record<
   string,
   {
-    title: string;
+    title: string
   }
 > = {
   '1': {
@@ -26,15 +26,15 @@ const modals: Record<
   '2': {
     title: 'Đặt mật khẩu về mặc định',
   },
-};
+}
 
 type Props = {
-  isMe?: boolean;
-  children: ReactElement;
-};
+  isMe?: boolean
+  children: ReactElement
+}
 
 const UserPasswordDropdown: FC<Props> = ({ isMe, children }) => {
-  const [keyModal, setKeyModal] = useState<string>();
+  const [keyModal, setKeyModal] = useState<string>()
 
   const items: ItemType[] = useMemo(
     () => [
@@ -54,18 +54,18 @@ const UserPasswordDropdown: FC<Props> = ({ isMe, children }) => {
       },
     ],
     [isMe]
-  );
+  )
 
   const handleClick: MenuClickEventHandler = useCallback(({ key }) => {
-    setKeyModal(key);
-  }, []);
+    setKeyModal(key)
+  }, [])
 
   const modifiedChildren = Children.map(children, (child) => {
     return cloneElement(child, {
       keyModal: keyModal,
       onCancel: () => setKeyModal(undefined),
-    });
-  });
+    })
+  })
 
   return (
     <>
@@ -86,17 +86,17 @@ const UserPasswordDropdown: FC<Props> = ({ isMe, children }) => {
         width={600}
         destroyOnClose
         onCancel={() => setKeyModal(undefined)}
-        title={keyModal && modals[keyModal].title}
+        title={keyModal && modals[keyModal]!.title}
         footer={null}
       >
         {modifiedChildren}
         {/* <ChangePassword /> */}
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default UserPasswordDropdown;
+export default UserPasswordDropdown
 
 const StyleAiTwotoneSetting = styled(AiTwotoneSetting)`
   animation: rotate 2s linear infinite;
@@ -109,4 +109,4 @@ const StyleAiTwotoneSetting = styled(AiTwotoneSetting)`
       transform: rotate(360deg);
     }
   }
-`;
+`

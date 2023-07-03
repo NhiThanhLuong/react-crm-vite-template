@@ -1,20 +1,20 @@
-import { USER_STATUS_LIST } from '@/features/user';
-import { Status } from '@/ts/types';
-import { findObjInArrByKey } from '@/utils';
-import { Tag, TagProps } from 'antd';
-import { FC } from 'react';
+import { USER_STATUS_LIST } from '@/features/user'
+import { Status } from '@/ts/types'
+import { findObjInArrByKey } from '@/utils'
+import { Tag, TagProps } from 'antd'
+import { FC } from 'react'
 
 type Props = TagProps & {
-  statusList?: Status[];
-  value: unknown;
-};
+  statusList?: Status[]
+  value: unknown
+}
 
 const StatusTag: FC<Props> = ({
   statusList = USER_STATUS_LIST,
   value,
   ...props
 }) => {
-  const status = findObjInArrByKey(statusList, value);
+  const status = findObjInArrByKey(statusList, value)
   return (
     <Tag
       color={status?.color}
@@ -23,7 +23,7 @@ const StatusTag: FC<Props> = ({
     >
       {status?.label}
     </Tag>
-  );
-};
+  )
+}
 
-export default StatusTag;
+export default StatusTag

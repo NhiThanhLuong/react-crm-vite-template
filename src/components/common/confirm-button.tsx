@@ -1,9 +1,9 @@
-import { Popconfirm, PopconfirmProps } from 'antd';
-import { FC, ReactNode } from 'react';
+import { Popconfirm, PopconfirmProps } from 'antd'
+import { FC, ReactNode } from 'react'
 
 type Props = PopconfirmProps & {
-  button: ReactNode;
-};
+  button: ReactNode
+}
 
 const ConfirmButton: FC<Props> = ({
   title = 'Bạn có chắc chắn thực hiện?',
@@ -21,7 +21,7 @@ const ConfirmButton: FC<Props> = ({
     >
       {button}
     </Popconfirm>
-  );
-};
+  )
+}
 
-export default ConfirmButton;
+export default ConfirmButton

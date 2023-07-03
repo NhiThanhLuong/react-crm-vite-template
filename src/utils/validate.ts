@@ -1,4 +1,4 @@
-import { Rule } from 'antd/es/form';
+import { Rule } from 'antd/es/form'
 
 const validate = {
   number: [
@@ -50,15 +50,15 @@ const validate = {
     ({ getFieldValue }) => ({
       validator(_, value) {
         if (!value || getFieldValue('password') === value) {
-          return Promise.resolve();
+          return Promise.resolve()
         }
         return Promise.reject(
           new Error('Nội dung phải trùng khớp với mật khẩu trên')
-        );
+        )
       },
     }),
   ] as [Rule],
-};
+}
 
 const validateFn = {
   min: (number: number) => [
@@ -80,21 +80,21 @@ const validateFn = {
       message: `Trường này phải có đúng ${number} ký tự`,
     },
   ],
-};
+}
 
-type TypeValidateKey = keyof typeof validate;
+type TypeValidateKey = keyof typeof validate
 const validator = (key: TypeValidateKey | TypeValidateKey[]) => {
   if (Array.isArray(key)) {
     return key.reduce(
       (result: Rule[], item) => result.concat(validate[item] as Rule[]),
       []
-    );
+    )
   }
-  return validate[key] as Rule[];
-};
+  return validate[key] as Rule[]
+}
 
 export const validatorFn = (key: keyof typeof validateFn) => {
-  return validateFn[key] as (_: unknown, __?: unknown) => Rule[];
-};
+  return validateFn[key] as (_: unknown, __?: unknown) => Rule[]
+}
 
-export default validator;
+export default validator

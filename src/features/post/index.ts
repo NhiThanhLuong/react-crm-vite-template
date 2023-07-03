@@ -1,8 +1,10 @@
-export * from './services/types';
-export * from './hooks/use-post-query';
-export * from './post-constant';
-export * from './services/enums';
-export * from './hooks/use-post-category-query';
+export * from './services/types'
+export * from './hooks/use-post-query'
+export * from './post-constant'
+export * from './services/enums'
+export * from './hooks/use-post-category-query'
 
-import PostInfo from './components/post-info';
-export { PostInfo };
+import PostDetail from './components/post-detail'
+import PostAdd from './components/post-add'
+import PostList from './components/post-list'
+export { PostDetail, PostAdd, PostList }

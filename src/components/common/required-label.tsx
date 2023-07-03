@@ -1,10 +1,10 @@
-import { Typography } from 'antd';
-import { FC, ReactNode } from 'react';
+import { Typography } from 'antd'
+import { FC, ReactNode } from 'react'
 
 type Props = {
-  label: ReactNode;
-  className?: string;
-};
+  label: ReactNode
+  className?: string
+}
 
 const RequiredLabel: FC<Props> = ({ label, className }) => {
   return (
@@ -12,7 +12,7 @@ const RequiredLabel: FC<Props> = ({ label, className }) => {
       <Typography.Text>{label}</Typography.Text>{' '}
       <span className="text-red-400">*</span>
     </span>
-  );
-};
+  )
+}
 
-export default RequiredLabel;
+export default RequiredLabel

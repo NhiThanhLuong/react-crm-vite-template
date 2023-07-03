@@ -1,9 +1,9 @@
-import { Card, CardProps, Spin } from 'antd';
-import { FC } from 'react';
+import { Card, CardProps, Spin } from 'antd'
+import { FC } from 'react'
 
 type Props = CardProps & {
-  isLoading?: boolean;
-};
+  isLoading?: boolean
+}
 
 const CustomCard: FC<Props> = ({
   isLoading = false,
@@ -21,7 +21,7 @@ const CustomCard: FC<Props> = ({
     >
       <Spin spinning={isLoading}>{props.children}</Spin>
     </Card>
-  );
-};
+  )
+}
 
-export default CustomCard;
+export default CustomCard

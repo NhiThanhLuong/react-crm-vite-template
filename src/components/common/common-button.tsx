@@ -1,5 +1,5 @@
-import { Button, ButtonProps } from 'antd';
-import { ElementType, Fragment } from 'react';
+import { Button, ButtonProps } from 'antd'
+import { ElementType, Fragment } from 'react'
 import {
   AiOutlineDelete,
   AiOutlineEdit,
@@ -8,8 +8,8 @@ import {
   AiOutlinePlus,
   AiOutlineSave,
   AiOutlineUndo,
-} from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+} from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
 const variants = {
   add: {
@@ -46,11 +46,11 @@ const variants = {
       height: 'auto',
     },
   },
-};
+}
 
 type Props = ButtonProps & {
-  action: keyof typeof variants;
-};
+  action: keyof typeof variants
+}
 
 export default function CommonButton({
   children,
@@ -58,7 +58,7 @@ export default function CommonButton({
   action,
   ...rest
 }: Props) {
-  const Component: ElementType = href ? Link : Fragment;
+  const Component: ElementType = href ? Link : Fragment
 
   return (
     <Component {...(href ? { to: href } : {})}>
@@ -66,5 +66,5 @@ export default function CommonButton({
         {children}
       </Button>
     </Component>
-  );
+  )
 }

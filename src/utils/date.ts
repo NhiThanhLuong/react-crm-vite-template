@@ -1,18 +1,14 @@
-import { FormInstance } from 'antd';
-import dayjs, { Dayjs } from 'dayjs';
+import { FormInstance } from 'antd'
+import dayjs, { Dayjs } from 'dayjs'
 
 export function formatDateToString(
   date?: Dayjs | string,
   formatType = 'DD/MM/YYYY'
 ) {
-  if (!date) return '';
-  const D = typeof date === 'string' ? dayjs(date) : date;
-  return D.format(formatType);
+  if (!date) return ''
+  const D = typeof date === 'string' ? dayjs(date) : date
+  return D.format(formatType)
 }
-
-// export function disableAfterToday(date) {
-//   return date.valueOf() > dayjs().valueOf();
-// }
 
 export function checkDisableFrom(
   startDate: Dayjs,
@@ -21,15 +17,15 @@ export function checkDisableFrom(
   disableAfterToday = true
 ) {
   if (disableAfterToday && startDate?.valueOf() > dayjs().valueOf()) {
-    return true;
+    return true
   }
 
-  const endDate = form.getFieldValue(endDateName) as Dayjs;
+  const endDate = form.getFieldValue(endDateName) as Dayjs
   if (!startDate || !endDate) {
-    return false;
+    return false
   }
 
-  return startDate.valueOf() >= endDate.valueOf();
+  return startDate.valueOf() >= endDate.valueOf()
 }
 
 export function checkDisableTo(
@@ -39,18 +35,13 @@ export function checkDisableTo(
   disableAfterToday = true
 ) {
   if (disableAfterToday && endDate?.valueOf() > dayjs().valueOf()) {
-    return true;
+    return true
   }
 
-  const startDate = form.getFieldValue(startDateName) as Dayjs;
+  const startDate = form.getFieldValue(startDateName) as Dayjs
   if (!startDate || !endDate) {
-    return false;
+    return false
   }
 
-  return endDate.valueOf() <= startDate.valueOf();
+  return endDate.valueOf() <= startDate.valueOf()
 }
-
-// export const numberDaysAgo = (number = 1) => dayjs().subtract(number, "day");
-
-// export const numberDaysAfterDay = (date = dayjs(), number = 1) =>
-//   date.add(number, "day");

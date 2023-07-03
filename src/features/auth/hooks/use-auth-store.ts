@@ -1,23 +1,23 @@
-import { create } from 'zustand';
+import { create } from 'zustand'
 
 type AuthStore = {
-  token?: string;
-  login: (_token: string) => void;
-  logout: () => void;
-};
+  token?: string
+  login: (_token: string) => void
+  logout: () => void
+}
 
 const useAuthStore = create<AuthStore>()((set) => ({
   token: localStorage.getItem('token') || undefined,
   login: (token) => {
-    localStorage.setItem('token', token);
+    localStorage.setItem('token', token)
     set({
       token,
-    });
+    })
   },
   logout: () => {
-    localStorage.removeItem('token');
-    set({ token: undefined });
+    localStorage.removeItem('token')
+    set({ token: undefined })
   },
-}));
+}))
 
-export default useAuthStore;
+export default useAuthStore

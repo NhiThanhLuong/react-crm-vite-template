@@ -1,7 +1,7 @@
-import { validator, validatorFn } from '@/utils';
-import { Button, Form, Input } from 'antd';
-import { FC } from 'react';
-import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai';
+import { validator, validatorFn } from '@/utils'
+import { Button, Form, Input } from 'antd'
+import { FC } from 'react'
+import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai'
 
 const ForgotPassword: FC = () => {
   return (
@@ -46,7 +46,7 @@ const ForgotPassword: FC = () => {
         <span>Xác nhận</span>
       </Button>
     </Form>
-  );
-};
+  )
+}
 
-export default ForgotPassword;
+export default ForgotPassword

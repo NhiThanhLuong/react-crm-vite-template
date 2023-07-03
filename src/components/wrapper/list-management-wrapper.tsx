@@ -1,31 +1,31 @@
-import { useFilter } from '@/hooks';
-import { BreadcrumbsType, ListData, TFilterSchema } from '@/ts/types';
-import { UseQueryResult } from '@tanstack/react-query';
-import { Card } from 'antd';
-import CommonButton from '../common/common-button';
-import CustomTable from '../custom/custom-table';
-import FilterWrapper from '../filter/filter-wrapper';
-import BreadcrumbsWrapper from './breadcrumbs-wrapper';
-import { ColumnsType } from 'antd/es/table';
+import { useFilter } from '@/hooks'
+import { BreadcrumbsType, ListData, TFilterSchema } from '@/ts/types'
+import { UseQueryResult } from '@tanstack/react-query'
+import { Card } from 'antd'
+import CommonButton from '../common/common-button'
+import CustomTable from '../custom/custom-table'
+import FilterWrapper from '../filter/filter-wrapper'
+import BreadcrumbsWrapper from './breadcrumbs-wrapper'
+import { ColumnsType } from 'antd/es/table'
 
 type UseQueryFunction<
   T extends Record<string, unknown>,
   TypeFilter extends Record<string, unknown>
-> = (apiFilter: TypeFilter) => UseQueryResult<T, unknown>;
+> = (apiFilter: TypeFilter) => UseQueryResult<T, unknown>
 
 type Props<
   TypeListParams extends Record<string, unknown>,
   DataRecord extends Record<string, unknown>
 > = {
-  listBreadcrumbs: BreadcrumbsType[];
-  scrollX?: number;
-  name: string;
-  path?: string;
-  filterSchema: TFilterSchema<TypeListParams>[];
-  useQueryFn: UseQueryFunction<ListData<DataRecord>, TypeListParams>;
-  columns: ColumnsType<DataRecord>;
-  fixedFilter?: TypeListParams;
-};
+  listBreadcrumbs: BreadcrumbsType[]
+  scrollX?: number
+  name: string
+  path?: string
+  filterSchema: TFilterSchema<TypeListParams>[]
+  useQueryFn: UseQueryFunction<ListData<DataRecord>, TypeListParams>
+  columns: ColumnsType<DataRecord>
+  fixedFilter?: TypeListParams
+}
 
 const ListManagementWrapper = <
   TypeListParams extends Record<string, unknown>,
@@ -47,12 +47,12 @@ const ListManagementWrapper = <
     onPageChange,
     onFilterChange,
     onResetFilter,
-  } = useFilter(filterSchema);
+  } = useFilter(filterSchema)
 
   const { data, isLoading, isFetching } = useQueryFn({
-    ...(apiFilter as TypeListParams),
+    ...apiFilter,
     ...fixedFilter,
-  });
+  })
 
   return (
     <BreadcrumbsWrapper breadcrumbs={listBreadcrumbs}>
@@ -91,7 +91,7 @@ const ListManagementWrapper = <
         />
       </Card>
     </BreadcrumbsWrapper>
-  );
-};
+  )
+}
 
-export default ListManagementWrapper;
+export default ListManagementWrapper
